@@ -8,4 +8,7 @@ mlflow
 bentoml
 scipy
 xgboost
+catboost
+lightgbm
+mplfinance
 
