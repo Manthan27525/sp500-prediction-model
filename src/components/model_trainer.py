@@ -1,4 +1,5 @@
 import os
+import json
 import numpy as np 
 import pandas as pd
 from sklearn.linear_model import LinearRegression ,Ridge , Lasso, ElasticNet    
@@ -10,9 +11,9 @@ from xgboost import XGBRegressor
 from lightgbm import LGBMRegressor
 from catboost import CatBoostRegressor
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from artifacts.best_params import best_params
+#from artifacts.best_params import best_params
 from src.logger import logging
-from skllearn.preprocessing import StandardScaler
+from sklearn.preprocessing import StandardScaler
 from src.exception import CustomException
 from src.utils import save_object, evaluate_models
 from dataclasses import dataclass
@@ -56,6 +57,8 @@ class ModelTrainer:
                 "Bagging Regressor":BaggingRegressor(),
                 "SVR":SVR()
             }
+            
+            best_params=json.load(open('artifacts/best_params.json'))
 
             model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,models=models,param=best_params)
 

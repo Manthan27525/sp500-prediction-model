@@ -11,4 +11,4 @@ xgboost
 catboost
 lightgbm
 mplfinance
-
+streamlit
